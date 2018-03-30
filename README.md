@@ -7,6 +7,8 @@ A complete ruby wrapper for shapeshift.io API
 Add this line to your application's Gemfile:
 
 ```ruby
+gem 'shapeshiftio', git: 'https://github.com/rbm4/shapeshiftio' 
+or simply
 gem 'shapeshiftio'
 ```
 

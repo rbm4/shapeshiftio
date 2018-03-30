@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ricardo.malafaia1994@gmail.com"]
 
   spec.summary       = %q{A complete functional Ruby wrapper for the shapeshift.io API.}
-  spec.description   = %q{}
+  spec.description   = %q{Only use versions above 0.0.3!}
   spec.homepage      = "https://github.com/rbm4/shapeshiftio"
   spec.license       = "MIT"
 
