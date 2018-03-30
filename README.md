@@ -60,33 +60,33 @@ Validate an address, given a currency symbol and address.
 
 # Normal Transaction (convert coin):
 
-withdrawal     = the address for resulting coin to be sent to
-pair       = what coins are being exchanged in the form [input coin]_[output coin]
-returnAddress  = (Optional) address to return deposit to if anything goes wrong with the exchange
-destTag    = (Optional) Destination tag that you want appended to a Ripple payment to you
-rsAddress  = (Optional) For new NXT accounts to be funded, you supply this on NXT payment to you
-apiKey     = (Optional) Your affiliate PUBLIC KEY
+withdrawal     = the address for resulting coin to be sent to<br>
+pair       = what coins are being exchanged in the form [input coin]_[output coin]<br>
+returnAddress  = (Optional) address to return deposit to if anything goes wrong with the exchange<br>
+destTag    = (Optional) Destination tag that you want appended to a Ripple payment to you<br>
+rsAddress  = (Optional) For new NXT accounts to be funded, you supply this on NXT payment to you<br>
+apiKey     = (Optional) Your affiliate PUBLIC KEY<br>
  
-example data: {"withdrawal":"AAAAAAAAAAAAA", "pair":"btc_ltc", returnAddress:"BBBBBBBBBBB"}
+example data: {"withdrawal":"AAAAAAAAAAAAA", "pair":"btc_ltc", returnAddress:"BBBBBBBBBBB"}<br>
 
     Shapeshiftio.shift("AAAAAAAAAAAAA","btc_ltc",options = {"returnAddress" : "BBBBBBBBBBB"})
     Shapeshiftio.shift("RIPPLE ADDRESS","ltc_xrp",options = {"returnAddres" : "RIPPLE ADDRESS", "destTag" : "RIPPLE ADDRESS TAG"})
 
 # Request Email Receipt
-email    = the address for receipt email to be sent to
-txid       = the transaction id of the transaction TO the user (ie the txid for the withdrawal NOT the deposit)
-example data {"email":"mail@example.com", "txid":"123ABC"}
+email    = the address for receipt email to be sent to<br>
+txid       = the transaction id of the transaction TO the user (ie the txid for the withdrawal NOT the deposit)<br>
+example data {"email":"mail@example.com", "txid":"123ABC"}<br>
 
     Shapeshiftio.receipt("mail@example.com","123ABC")
     
 # Fixed Amount Transaction / Quote Send Exact Price
-amount          = the amount to be sent to the withdrawal address
-withdrawal      = the address for coin to be sent to
-pair            = what coins are being exchanged in the form [input coin]_[output coin]
-returnAddress   = (Optional) address to return deposit to if anything goes wrong with exchange
-destTag         = (Optional) Destination tag that you want appended to a Ripple payment to you
-rsAddress       = (Optional) For new NXT accounts to be funded, supply this on NXT payment to you
-apiKey          = (Optional) Your affiliate PUBLIC KEY
+amount          = the amount to be sent to the withdrawal address<br>
+withdrawal      = the address for coin to be sent to<br>
+pair            = what coins are being exchanged in the form [input coin]_[output coin]<br>
+returnAddress   = (Optional) address to return deposit to if anything goes wrong with exchange<br>
+destTag         = (Optional) Destination tag that you want appended to a Ripple payment to you<br>
+rsAddress       = (Optional) For new NXT accounts to be funded, supply this on NXT payment to you<br>
+apiKey          = (Optional) Your affiliate PUBLIC KEY<br>
 
     Shapeshiftio.fixed(amount, wallet_address, coin_pair, options = {})
     Shapeshiftio.quote(amount, coin_pair)
