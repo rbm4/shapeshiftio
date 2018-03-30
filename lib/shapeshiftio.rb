@@ -1,4 +1,4 @@
-require "shapeshift/version"
+require "shapeshiftio/version"
 require 'net/http'
 require 'json'
 module Shapeshiftio
