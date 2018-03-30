@@ -1,15 +1,13 @@
-# Shapeshift
+# Shapeshiftio
+A complete ruby wrapper for shapeshift.io API
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/shapeshift`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Refactor and make code base more DRY
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'shapeshift'
+gem 'shapeshiftio'
 ```
 
 And then execute:
@@ -18,21 +16,88 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install shapeshift
+    $ gem install shapeshiftio
 
 ## Usage
+..* All methods return a JSON object with the fields detailed at the [shapeshift's official website](https://info.shapeshift.io/api)
+..* To call a method you only need the __required fields__, if you want to pass more parameters, just add a hash when callind a method (examples below)
 
-TODO: Use cases and example code coming soon.
+# GET requests:
 
-## Development
+List available coins in the shapeshift API:
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+    Shapeshiftio.get_coins
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Gets the current deposit limit set by Shapeshift for a specific pair:
+
+    Shapeshiftio.limit("doge_dgb")
+
+Market info of a specific pair:
+
+    Shapeshiftio.market_info("doge_dgb")
+    
+Gets the current rate offered by Shapeshift:
+
+    Shapeshiftio.rate("btc_eth")
+
+Get a list of the most recent transactions:
+
+    Shapeshiftio.recent_tx(max)  #[max] is an optional maximum number of transactions to return.
+
+Returns the status of the most recent deposit transaction to the address:
+
+    Shapeshiftio.tx_stat(deposit_address) #[address] is the deposit address to look up.
+
+Time Remaining on Fixed Amount Transaction:
+
+    Shapeshiftio.time_remaining(deposit_address) #[address] is the deposit address to look up. 
+
+Validate an address, given a currency symbol and address.
+
+    Shapeshiftio.validate(address,coin_symbol) #[address] the address that the user wishes to validate, [coinSymbol] the currency symbol of the coin
+
+# POST requests
+
+# Normal Transaction (convert coin):
+
+withdrawal     = the address for resulting coin to be sent to
+pair       = what coins are being exchanged in the form [input coin]_[output coin]  
+returnAddress  = (Optional) address to return deposit to if anything goes wrong with the exchange
+destTag    = (Optional) Destination tag that you want appended to a Ripple payment to you
+rsAddress  = (Optional) For new NXT accounts to be funded, you supply this on NXT payment to you
+apiKey     = (Optional) Your affiliate PUBLIC KEY
+ 
+example data: {"withdrawal":"AAAAAAAAAAAAA", "pair":"btc_ltc", returnAddress:"BBBBBBBBBBB"}
+
+    Shapeshiftio.shift("AAAAAAAAAAAAA","btc_ltc",options = {"returnAddress" : "BBBBBBBBBBB"})
+    Shapeshiftio.shift("RIPPLE ADDRESS","ltc_xrp",options = {"returnAddres" : "RIPPLE ADDRESS", "destTag" : "RIPPLE ADDRESS TAG"})
+
+# Request Email Receipt
+email    = the address for receipt email to be sent to
+txid       = the transaction id of the transaction TO the user (ie the txid for the withdrawal NOT the deposit)
+example data {"email":"mail@example.com", "txid":"123ABC"}
+
+    Shapeshiftio.receipt("mail@example.com","123ABC")
+    
+# Fixed Amount Transaction / Quote Send Exact Price
+amount          = the amount to be sent to the withdrawal address
+withdrawal      = the address for coin to be sent to
+pair            = what coins are being exchanged in the form [input coin]_[output coin]
+returnAddress   = (Optional) address to return deposit to if anything goes wrong with exchange
+destTag         = (Optional) Destination tag that you want appended to a Ripple payment to you
+rsAddress       = (Optional) For new NXT accounts to be funded, supply this on NXT payment to you
+apiKey          = (Optional) Your affiliate PUBLIC KEY
+
+    Shapeshiftio.fixed(amount, wallet_address, coin_pair, options = {})
+    Shapeshiftio.quote(amount, coin_pair)
+
+# Cancel Pending Transaction
+
+    Shapeshiftio.cancel(deposit_address)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/atjohnson/shapeshift.
+Bug reports and pull requests are welcome on GitHub.
 
 
 ## License
