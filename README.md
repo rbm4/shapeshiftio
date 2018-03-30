@@ -61,7 +61,7 @@ Validate an address, given a currency symbol and address.
 # Normal Transaction (convert coin):
 
 withdrawal     = the address for resulting coin to be sent to
-pair       = what coins are being exchanged in the form [input coin]_[output coin]  
+pair       = what coins are being exchanged in the form [input coin]_[output coin]
 returnAddress  = (Optional) address to return deposit to if anything goes wrong with the exchange
 destTag    = (Optional) Destination tag that you want appended to a Ripple payment to you
 rsAddress  = (Optional) For new NXT accounts to be funded, you supply this on NXT payment to you
