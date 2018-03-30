@@ -12,7 +12,7 @@ private
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = (url.scheme == "https")
     response = http.request(req)
-    result = response
+    result = JSON.parse(response.body)
   end
 
 
