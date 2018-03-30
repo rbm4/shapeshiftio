@@ -1,6 +1,6 @@
 # Shapeshiftio
 A complete ruby wrapper for shapeshift.io API
-
+[![Gem Version](https://badge.fury.io/rb/shapeshiftio.svg)](https://badge.fury.io/rb/shapeshiftio)<br>
 
 ## Installation
 
@@ -21,8 +21,8 @@ Or install it yourself as:
     $ gem install shapeshiftio
 
 ## Usage
-..* All methods return a JSON object with the fields detailed at the [shapeshift's official website](https://info.shapeshift.io/api)
-..* To call a method you only need the __required fields__, if you want to pass more parameters, just add a hash when callind a method (examples below)
+* All methods return a JSON object with the fields detailed at the [shapeshift's official website](https://info.shapeshift.io/api)
+* To call a method you only need the __required fields__, if you want to pass more parameters, just add a hash when callind a method (examples below)
 
 # GET requests:
 
