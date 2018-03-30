@@ -18,7 +18,16 @@ private
 
 public
   def self.get(path_name, value = nil, p2 = nil)
-    uri = URI("https://shapeshift.io/#{path_name}/#{value}/#{p2}")
+    route = ""
+    route.append(path_name)
+    if !(value.nil?)
+      route.append(value)
+    end
+    
+    if !(p2.nil?)
+      route.append(p2)
+    end
+    uri = URI("https://shapeshift.io/#{route}")
     response = Net::HTTP.get(uri)
     check_response(response)
   end
