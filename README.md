@@ -84,12 +84,13 @@ example data {"email":"mail@example.com", "txid":"123ABC"}<br>
     
 # Fixed Amount Transaction / Quote Send Exact Price
 amount          = the amount to be sent to the withdrawal address<br>
+depositAmount   = the amount to be sent to the deposit address<br>
 withdrawal      = the address for coin to be sent to<br>
-pair            = what coins are being exchanged in the form [input coin]_[output coin]<br>
+pair                    = what coins are being exchanged in the form [input coin]_[output coin]  ie ltc_btc<br>
 returnAddress   = (Optional) address to return deposit to if anything goes wrong with exchange<br>
 destTag         = (Optional) Destination tag that you want appended to a Ripple payment to you<br>
 rsAddress       = (Optional) For new NXT accounts to be funded, supply this on NXT payment to you<br>
-apiKey          = (Optional) Your affiliate PUBLIC KEY<br>
+apiKey          = (Optional) Your affiliate PUBLIC KEY, for volume tracking, affiliate payments, split-shifts, etc...<br>
 
     Shapeshiftio.fixed(amount, wallet_address, coin_pair, options = {})
     Shapeshiftio.quote(amount, coin_pair)
